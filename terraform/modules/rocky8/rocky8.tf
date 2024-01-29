@@ -23,8 +23,8 @@ resource "proxmox_vm_qemu" "rocky8" {
     scsi {
       scsi0 {
         disk {
-          size       = 18
-          storage    = "vg_nvme"
+          size       = 32
+          storage    = "ssd"
           emulatessd = true
         }
       }
