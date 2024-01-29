@@ -20,12 +20,11 @@ resource "proxmox_vm_qemu" "rocky8" {
   tags = join(",", var.tags)
 
   disks {
-    scsi {
-      scsi0 {
+    virtio {
+      virtio0 {
         disk {
-          size       = 32
-          storage    = "ssd"
-          emulatessd = true
+          size = 32
+          storage = "ssd"
         }
       }
     }
