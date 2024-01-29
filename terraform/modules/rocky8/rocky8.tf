@@ -19,12 +19,15 @@ resource "proxmox_vm_qemu" "rocky8" {
 
   tags = join(",", var.tags)
 
-  dynamic "disk" {
-    for_each = var.disks
-    content {
-      size    = disk.value.size
-      storage = disk.value.storage
-      type    = disk.value.type
+  disks {
+    scsi {
+      scsi0 {
+        disk {
+          size       = 18
+          storage    = "vg_nvme"
+          emulatessd = true
+        }
+      }
     }
   }
 
