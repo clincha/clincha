@@ -20,6 +20,14 @@ resource "proxmox_vm_qemu" "rocky8" {
   tags = join(",", var.tags)
 
   disks {
+    ide {
+      ide0 {
+        disk {
+          size = 1
+          storage = "local-lvm"
+        }
+      }
+    }
     virtio {
       virtio0 {
         disk {
