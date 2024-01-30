@@ -19,7 +19,7 @@ resource "proxmox_vm_qemu" "rocky8" {
   bootdisk = "virtio0"
 
   ciuser = "ansible"
-  sshkeys = var.ansible_id_rsa
+  sshkeys = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAICDMAJMgmScKdlNtaIUHdCZ85cx76MVe1iUJwiU0/NyM ansible@clincha.co.uk"
   ipconfig0 = "ip=${ var.ip }/${ var.subnet_mask },gw=${ var.gateway }"
 
   tags = join(",", var.tags)
