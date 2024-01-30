@@ -15,19 +15,16 @@ resource "proxmox_vm_qemu" "rocky8" {
   memory  = var.memory
 
   os_type   = var.os_type
+  cloudinit_cdrom_storage = "ssd"
+  bootdisk = "virtio0"
+
+  ciuser = "ansible"
+  sshkeys = var.ansible_id_rsa
   ipconfig0 = "ip=${ var.ip }/${ var.subnet_mask },gw=${ var.gateway }"
 
   tags = join(",", var.tags)
 
   disks {
-    ide {
-      ide0 {
-        disk {
-          size = 1
-          storage = "local-lvm"
-        }
-      }
-    }
     virtio {
       virtio0 {
         disk {
