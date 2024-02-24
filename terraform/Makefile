@@ -11,20 +11,20 @@ all: build plan
 
 build:
 	@echo "Building..."
-	@podman build . --file Dockerfile --tag docker.io/clincha/terraform-init:${VERSION}
+	@podman build . --file Dockerfile --tag docker.io/clincha/terraform:${VERSION}
 
 debug: build
 	@echo "Debugging..."
-	@podman run -it --entrypoint /bin/sh --env="ARM_ACCESS_KEY=${ARM_ACCESS_KEY}" docker.io/clincha/terraform-init:${VERSION}
+	@podman run -it --entrypoint /bin/sh --env="ARM_ACCESS_KEY=${ARM_ACCESS_KEY}" docker.io/clincha/terraform:${VERSION}
 
 apply: build
 	@echo "Applying..."
-	@podman run --entrypoint sh --env="TF_VAR*" --env="ARM_ACCESS_KEY=${ARM_ACCESS_KEY}" docker.io/clincha/terraform-init:${VERSION} -c "terraform init && terraform apply -auto-approve"
+	@podman run --entrypoint sh --env="TF_VAR*" --env="ARM_ACCESS_KEY=${ARM_ACCESS_KEY}" docker.io/clincha/terraform:${VERSION} -c "terraform init && terraform apply -auto-approve"
 
 plan: build
 	@echo "Planning..."
-	@podman run --entrypoint sh --env="TF_VAR*" --env="ARM_ACCESS_KEY=${ARM_ACCESS_KEY}" docker.io/clincha/terraform-init:${VERSION} -c "terraform init && terraform plan"
+	@podman run --entrypoint sh --env="TF_VAR*" --env="ARM_ACCESS_KEY=${ARM_ACCESS_KEY}" docker.io/clincha/terraform:${VERSION} -c "terraform init && terraform plan"
 
 destroy: build
 	@echo "Destroying..."
-	@podman run --entrypoint sh --env="TF_VAR*" --env="ARM_ACCESS_KEY=${ARM_ACCESS_KEY}" docker.io/clincha/terraform-init:${VERSION} -c "terraform init && terraform destroy -auto-approve"
+	@podman run --entrypoint sh --env="TF_VAR*" --env="ARM_ACCESS_KEY=${ARM_ACCESS_KEY}" docker.io/clincha/terraform:${VERSION} -c "terraform init && terraform destroy -auto-approve"
