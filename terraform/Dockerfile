@@ -1,3 +1,3 @@
-FROM docker.io/clincha/terraform-provider-proxmox:v3.0.1-rc1
+FROM docker.io/clincha/terraform-provider-proxmox:v2.9.9
 
 COPY . .
