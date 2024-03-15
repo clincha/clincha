@@ -80,7 +80,7 @@ jobs:
           sudo wg
           ping 10.1.2.12 -c 3
 
-      - name: "Run the make command"
+      - name: "Run the terraform command"
         run: terraform init && terraform ${{ inputs.command }}
         working-directory: terraform
         env:
