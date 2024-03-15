@@ -20,6 +20,7 @@ variable "vsphere_server" {
 
 variable "vsphere_user" {
   type = string
+  default = "root"
 }
 
 variable "vsphere_password" {
