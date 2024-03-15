@@ -10,9 +10,7 @@ jobs:
       command: "destroy"
     secrets:
       ARM_ACCESS_KEY: ${{ secrets.ARM_ACCESS_KEY }}
-      ANSIBLE_PK: ${{ secrets.ANSIBLE_PK }}
-      BRISTOL_PROXMOX_TOKEN_SECRET: ${{ secrets.BRISTOL_PROXMOX_TOKEN_SECRET }}
+      TF_VAR_vsphere_password: ${{ secrets.HL_ESXI_PASSWORD }}
       HL_TF_PRIVATE_KEY: ${{ secrets.HL_TF_PRIVATE_KEY }}
       HL_TF_PRESHARED_KEY: ${{ secrets.HL_TF_PRESHARED_KEY }}
       HL_ENDPOINT: ${{ secrets.HL_ENDPOINT }}
-      DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
