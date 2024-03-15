@@ -78,7 +78,7 @@ jobs:
         run: |
           sudo wg-quick up wg0
           sudo wg
-          ping 192.168.1.12 -c 3
+          ping 10.1.2.12 -c 3
 
       - name: "Run the make command"
         run: terraform init && terraform ${{ inputs.command }}
