@@ -7,7 +7,7 @@ jobs:
   destroy:
     uses: "./.github/workflows/template-terraform.yml"
     with:
-      command: "destroy"
+      command: "destroy --auto-approve"
     secrets:
       ARM_ACCESS_KEY: ${{ secrets.ARM_ACCESS_KEY }}
       HL_ESXI_PASSWORD: ${{ secrets.HL_ESXI_PASSWORD }}
