@@ -7,6 +7,7 @@ resource "vsphere_host" "esxi01" {
   hostname = "10.1.2.11"
   username = var.vsphere_user
   password = var.vsphere_password
+  datacenter = vsphere_datacenter.hl_dc.id
   cluster  = vsphere_compute_cluster.hl-cluster.id
   license  = vsphere_license.vmug.id
 }
@@ -15,6 +16,7 @@ resource "vsphere_host" "esxi02" {
   hostname = "10.1.2.12"
   username = var.vsphere_user
   password = var.vsphere_password
+  datacenter = vsphere_datacenter.hl_dc.id
   cluster  = vsphere_compute_cluster.hl-cluster.id
   license  = vsphere_license.vmug.id
 }
@@ -23,6 +25,7 @@ resource "vsphere_host" "esxi03" {
   hostname = "10.1.2.13"
   username = var.vsphere_user
   password = var.vsphere_password
+  datacenter = vsphere_datacenter.hl_dc.id
   cluster  = vsphere_compute_cluster.hl-cluster.id
   license  = vsphere_license.vmug.id
 }
