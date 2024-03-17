@@ -1,27 +1,29 @@
-data "vsphere_datacenter" "datacenter" {
-  name = var.datacenter
+data vsphere_datacenter "hl-01" {
+  name = "hl-dc-01"
 }
 
-data "vsphere_host" "host" {
-  count         = length(var.hosts)
-  name          = var.hosts[count.index]
-  datacenter_id = data.vsphere_datacenter.datacenter.id
+resource "vsphere_compute_cluster" "hl-cluster" {
+  datacenter_id = data.vsphere_datacenter.hl-01.id
+  name          = "hl-cluster-01"
 }
 
-resource "vsphere_compute_cluster" "compute_cluster" {
-  name            = "terraform-compute-cluster-test"
-  datacenter_id   = data.vsphere_datacenter.datacenter.id
-  host_system_ids = [data.vsphere_host.host.*.id]
+resource "vsphere_host" "esxi01" {
+  hostname = "10.1.2.11"
+  username = var.vsphere_user
+  password = var.vsphere_password
+  cluster  = vsphere_compute_cluster.hl-cluster.id
 }
 
-variable "datacenter" {
-  default = "hl-01"
+resource "vsphere_host" "esxi02" {
+  hostname = "10.1.2.12"
+  username = var.vsphere_user
+  password = var.vsphere_password
+  cluster  = vsphere_compute_cluster.hl-cluster.id
 }
 
-variable "hosts" {
-  default = [
-    "10.1.2.11",
-    "10.1.2.12",
-    "10.1.2.13",
-  ]
+resource "vsphere_host" "esxi03" {
+  hostname = "10.1.2.13"
+  username = var.vsphere_user
+  password = var.vsphere_password
+  cluster  = vsphere_compute_cluster.hl-cluster.id
 }
