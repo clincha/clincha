@@ -8,9 +8,10 @@ terraform {
 }
 
 provider "vsphere" {
-  vsphere_server = var.vsphere_server
-  user           = var.vsphere_user
-  password       = var.vsphere_password
+  vsphere_server       = var.vsphere_server
+  user                 = var.vsphere_user
+  password             = var.vsphere_password
+  allow_unverified_ssl = true
 }
 
 variable "vsphere_server" {
@@ -19,7 +20,7 @@ variable "vsphere_server" {
 }
 
 variable "vsphere_user" {
-  type = string
+  type    = string
   default = "root"
 }
 
