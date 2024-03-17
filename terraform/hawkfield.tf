@@ -1,7 +1,3 @@
-data vsphere_datacenter "hl-01" {
-  name = "hl-dc-01"
-}
-
 #resource "vsphere_compute_cluster" "hl-cluster" {
 #  datacenter_id = data.vsphere_datacenter.hl-01.id
 #  name          = "hl-cluster-01"
@@ -33,6 +29,10 @@ resource "vsphere_host" "esxi03" {
 
 resource "vsphere_license" "vmug" {
   license_key = var.licence_key
+}
+
+resource "vsphere_datacenter" "hl-dc" {
+  name = "hl-dc"
 }
 
 variable "licence_key" {
