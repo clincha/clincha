@@ -15,3 +15,4 @@ jobs:
       HL_TF_PRIVATE_KEY: ${{ secrets.HL_TF_PRIVATE_KEY }}
       HL_TF_PRESHARED_KEY: ${{ secrets.HL_TF_PRESHARED_KEY }}
       HL_ENDPOINT: ${{ secrets.HL_ENDPOINT }}
+      HL_ESXI_LICENCE_KEY: ${{ secrets.HL_ESXI_LICENCE_KEY }}

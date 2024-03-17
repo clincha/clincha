@@ -12,6 +12,7 @@ resource "vsphere_host" "esxi01" {
   username = var.vsphere_user
   password = var.vsphere_password
   cluster  = vsphere_compute_cluster.hl-cluster.id
+  license  = var.licence_key
 }
 
 resource "vsphere_host" "esxi02" {
@@ -19,6 +20,7 @@ resource "vsphere_host" "esxi02" {
   username = var.vsphere_user
   password = var.vsphere_password
   cluster  = vsphere_compute_cluster.hl-cluster.id
+  license  = var.licence_key
 }
 
 resource "vsphere_host" "esxi03" {
@@ -26,4 +28,10 @@ resource "vsphere_host" "esxi03" {
   username = var.vsphere_user
   password = var.vsphere_password
   cluster  = vsphere_compute_cluster.hl-cluster.id
+  license  = var.licence_key
+}
+
+variable "licence_key" {
+  description = "The license key to use for the ESXi hosts"
+  type        = string
 }

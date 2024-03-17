@@ -41,6 +41,9 @@ on:
       HL_ENDPOINT:
         required: true
         description: "The HL WireGuard endpoint"
+      HL_ESXI_LICENCE_KEY:
+        required: true
+        description: "The HL ESXI licence key"
 jobs:
   terraform:
     runs-on: ubuntu-latest
@@ -85,6 +88,7 @@ jobs:
         working-directory: terraform
         env:
           ARM_ACCESS_KEY: ${{ secrets.ARM_ACCESS_KEY }}
+          HL_ESXI_LICENCE_KEY: ${{ secrets.HL_ESXI_LICENCE_KEY }}
           TF_VAR_vsphere_password: ${{ secrets.HL_ESXI_PASSWORD }}
 
       - name: "Stop WireGuard"
