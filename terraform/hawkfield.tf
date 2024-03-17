@@ -31,10 +31,9 @@ resource "vsphere_license" "vmug" {
   license_key = var.licence_key
 }
 
-resource "vsphere_datacenter" "hl-dc" {
-  name = "hawkfield_lodge"
-
-}
+#resource "vsphere_datacenter" "hl-dc" {
+#  name = "hawkfield_lodge"
+#}
 
 variable "licence_key" {
   description = "The license key to use for the ESXi hosts"
