@@ -32,7 +32,8 @@ resource "vsphere_license" "vmug" {
 }
 
 resource "vsphere_datacenter" "hl-dc" {
-  name = "hl-dc"
+  name = "hawkfield_lodge"
+
 }
 
 variable "licence_key" {
