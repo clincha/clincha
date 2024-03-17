@@ -34,4 +34,5 @@ resource "vsphere_host" "esxi03" {
 variable "licence_key" {
   description = "The license key to use for the ESXi hosts"
   type        = string
+  sensitive   = true
 }
