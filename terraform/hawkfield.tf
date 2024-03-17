@@ -5,8 +5,6 @@ data "vsphere_datacenter" "datacenter" {
 data "vsphere_host" "host" {
   count         = length(var.hosts)
   name          = var.hosts[count.index]
-  username      = var.vsphere_user
-  password      = var.vsphere_password
   datacenter_id = data.vsphere_datacenter.datacenter.id
 }
 
